@@ -1,0 +1,13 @@
+[unit]
+Description=Guncorn server for DOMAIN
+
+[Service]
+Restart=on-failure
+User=luo
+WorkingDirectory=/home/luo/DOMAIN
+EnvironmentFile=/home/luo/DOMAIN/.env
+
+ExecStart=/home/luo/DOMAIN/ttdenv/bin/gunicorn --bind unix:/home/luo/DOMAIN/superlists.sock superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
